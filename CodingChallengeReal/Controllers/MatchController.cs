@@ -82,13 +82,13 @@ namespace CodingChallengeReal.Controllers
             var max = min_max.Item2;
             var original = $"elo_queue_{min}_{max}";
             // find user in specific elo bracket, if none found expand out after 10 seconds
-            RedisValue? opponent = null;
+           MatchResultDTO? result = null;
 
             // does 10 different brackets
-            while (searchRadius < 10)
+            for (int r = 0; r < 10; r++)
             {
                 // go through all the brackets up to searchRadius, guaranteed to be at least 1
-                for (int i = 0; i < searchRadius; i++)
+                for (int i = 0; i < r; i++)
                 {
 
                     var offset = searchRadius * 100;
@@ -101,28 +101,35 @@ namespace CodingChallengeReal.Controllers
                     }
 
                     Console.WriteLine("Searching original...");
-                    opponent = await _enqueueService.AttemptMatchPlayer(min, max, userId); // search original bracket
+                    result = await _enqueueService.AttemptMatchPlayer(min, max, userId); // search original bracket
 
 
-                    if (lowerBucket != original && opponent == null) // actually search the lower bucket if different than original bracket, and match not found
+                    if (lowerBucket != original && result == null) // actually search the lower bucket if different than original bracket, and match not found
                     {
-                        opponent = await _enqueueService.AttemptMatchPlayer(min - offset, max - offset, userId);
+                        result = await _enqueueService.AttemptMatchPlayer(min - offset, max - offset, userId);
 
                         Console.WriteLine($"Searching lower bucket {min - offset} {max - offset}");
                     }
-                    if (opponent == null) // search upper bracket if nothing was found in lower
+                    if (result == null) // search upper bracket if nothing was found in lower
                     {
-                        opponent = await _enqueueService.AttemptMatchPlayer(min + offset, max + offset, userId);
+                        result = await _enqueueService.AttemptMatchPlayer(min + offset, max + offset, userId);
                         Console.WriteLine($"Searching upper bucket {min + offset} {max + offset}");
                     }
 
-                    if (opponent != null) // match was found, stop queueing
+                    if (result != null) // match was found, stop queueing
                     {
-                        AddMatchDTO matchDto = new AddMatchDTO(userId, opponent, null, null, null);
-                        await AddMatchAsync(matchDto); // makes a match in DB
-                        return Ok(matchDto);
+                        if (result?.Opponent != null && result.IsInitiator) // only one match will be made depending on who the "initiator" was.
+                        {
+                            AddMatchDTO matchDto = new AddMatchDTO(userId, result.Opponent, null, null, null);
+                            await AddMatchAsync(matchDto); // makes a match in DB
+                            return Ok(matchDto);
+                        } else
+                        {
+                            return Ok(true);
+                        }
+
                     }
-                    Console.WriteLine($"Found match in search radius {searchRadius}: {opponent != null}");
+                    Console.WriteLine($"Found match in search radius {searchRadius}: {result != null}");
                 }
                 searchRadius += 1;
             }
