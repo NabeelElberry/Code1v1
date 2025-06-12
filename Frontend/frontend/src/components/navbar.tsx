@@ -26,6 +26,7 @@ import {
 import { Logo } from "@/components/icons";
 import { DynamicAuthenticationButton } from "./DynamicAuthenticationButton";
 import { CheckAuthStatus, CreateUserButton } from "@/config/firebase";
+import { TestApiCall } from "./TestApiCall";
 
 export const Navbar = () => {
   const searchInput = (
@@ -57,6 +58,9 @@ export const Navbar = () => {
           </NavbarItem>
           <NavbarItem>
             <CheckAuthStatus />
+          </NavbarItem>
+          <NavbarItem>
+            <TestApiCall />
           </NavbarItem>
         </NavbarContent>
 

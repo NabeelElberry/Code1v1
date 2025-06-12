@@ -5,6 +5,9 @@ using CodingChallengeReal.Repositories.Implementation;
 using CodingChallengeReal.Repositories.Interface;
 using CodingChallengeReal.Services;
 using CodingChallengeReal.Settings;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using Microsoft.OpenApi.Models;
 using StackExchange.Redis;
 using System.Net.WebSockets;
 using System.Numerics;
@@ -30,8 +33,70 @@ builder.Services.AddSingleton<IAmazonDynamoDB>(_ => new AmazonDynamoDBClient(Ama
 
 builder.Services.AddSingleton<IConnectionMultiplexer>(ConnectionMultiplexer.Connect("localhost:6379"));
 builder.Services.AddScoped<EnqueueService>();
+
+builder.Services
+    .AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+    .AddJwtBearer(options =>
+    {
+        options.Authority = "https://securetoken.google.com/code1v1authentication";
+        options.TokenValidationParameters = new TokenValidationParameters
+        {
+            ValidateIssuer = true,
+            ValidIssuer = "https://securetoken.google.com/code1v1authentication",
+            ValidateAudience = true,
+            ValidAudience = "code1v1authentication",
+            ValidateLifetime = true,
+        };
+    });
+
+builder.Services.AddAuthorization();
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen(c =>
+{
+    c.SwaggerDoc("v1", new() { Title = "API", Version = "v1" });
+
+    c.AddSecurityDefinition("Bearer", new()
+    {
+        Description = "Enter your Firebase ID token below (without 'Bearer ' prefix).",
+        Name = "Authorization",
+        In = ParameterLocation.Header,
+        Type = SecuritySchemeType.Http,
+        Scheme = "Bearer"
+
+    });
+
+    c.AddSecurityRequirement(new OpenApiSecurityRequirement
+    {
+        {
+            new OpenApiSecurityScheme
+            {
+                Reference = new() { Type = ReferenceType.SecurityScheme, Id = "Bearer" }
+            },
+            Array.Empty<string>()
+        }
+    });
+});
+
+var corsPolicy = "AllowLocalhostFrontend";
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: corsPolicy,
+        policy =>
+        {
+            policy.WithOrigins("http://localhost:5173")
+                  .AllowAnyHeader()
+                  .AllowAnyMethod();
+        });
+});
+builder.Services.AddControllers();
+
 var app = builder.Build();
+app.UseAuthentication();
+app.UseAuthorization();
+app.MapControllers();
 app.UseWebSockets();
+app.UseCors(corsPolicy);
 app.MapGet("/ws", async (HttpContext context, ChatService chatService) =>
 {
 

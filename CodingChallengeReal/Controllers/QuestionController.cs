@@ -3,10 +3,12 @@ using CodingChallengeReal.Domains;
 using CodingChallengeReal.DTO;
 using CodingChallengeReal.Repositories.Implementation;
 using CodingChallengeReal.Repositories.Interface;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CodingChallengeReal.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("[controller]")]
     public class QuestionController: Controller
@@ -23,6 +25,12 @@ namespace CodingChallengeReal.Controllers
         [HttpPost]
         public async Task<IActionResult> AddQuestionAsync(AddQuestionDTO addQuestionRequest)
         {
+            var uid = User.FindFirst("user_id")?.Value;
+            var email = User.FindFirst("email")?.Value;
+            var role = User.FindFirst("role")?.Value;
+
+            Console.WriteLine($"UID: {uid}, EMAIL: {email}, ROLE: {role}");
+
             Question question = _mapper.Map<Question>(addQuestionRequest);
             question.id = Guid.NewGuid().ToString();
             question.sk = "meta";

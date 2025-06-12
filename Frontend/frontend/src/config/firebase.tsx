@@ -116,6 +116,7 @@ export const CreateUserButton = () => {
 
 export const SignInButton = () => {
   const {isOpen, onOpen, onOpenChange} = useDisclosure();
+  
   return (
       <>
       <Button onPress={onOpen}>
@@ -153,8 +154,10 @@ export const SignOutButton = () => {
 
 export const CheckAuthStatus = () => {
   const [signedIn, setSignedIn] = useState(false)
-  onAuthStateChanged(auth, (user) => {
+  
+  onAuthStateChanged(auth, async (user) => {
     if (user) {
+      console.log("Token: ", await user.getIdToken())
       setSignedIn(true)
     } else {
       setSignedIn(false)

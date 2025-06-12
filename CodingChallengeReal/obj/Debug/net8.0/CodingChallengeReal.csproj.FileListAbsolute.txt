@@ -40,3 +40,11 @@ C:\Users\nabee\source\repos\CodingChallengeReal\CodingChallengeReal\obj\Debug\ne
 C:\Users\nabee\source\repos\CodingChallengeReal\CodingChallengeReal\obj\Debug\net8.0\CodingChallengeReal.sourcelink.json
 C:\Users\nabee\source\repos\CodingChallengeReal\CodingChallengeReal\bin\Debug\net8.0\Pipelines.Sockets.Unofficial.dll
 C:\Users\nabee\source\repos\CodingChallengeReal\CodingChallengeReal\bin\Debug\net8.0\StackExchange.Redis.dll
+C:\Users\nabee\source\repos\CodingChallengeReal\CodingChallengeReal\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\nabee\source\repos\CodingChallengeReal\CodingChallengeReal\bin\Debug\net8.0\Microsoft.IdentityModel.Abstractions.dll
+C:\Users\nabee\source\repos\CodingChallengeReal\CodingChallengeReal\bin\Debug\net8.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\nabee\source\repos\CodingChallengeReal\CodingChallengeReal\bin\Debug\net8.0\Microsoft.IdentityModel.Logging.dll
+C:\Users\nabee\source\repos\CodingChallengeReal\CodingChallengeReal\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.dll
+C:\Users\nabee\source\repos\CodingChallengeReal\CodingChallengeReal\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\nabee\source\repos\CodingChallengeReal\CodingChallengeReal\bin\Debug\net8.0\Microsoft.IdentityModel.Tokens.dll
+C:\Users\nabee\source\repos\CodingChallengeReal\CodingChallengeReal\bin\Debug\net8.0\System.IdentityModel.Tokens.Jwt.dll

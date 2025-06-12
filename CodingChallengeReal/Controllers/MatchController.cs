@@ -4,11 +4,13 @@ using CodingChallengeReal.DTO;
 using CodingChallengeReal.Repositories.Implementation;
 using CodingChallengeReal.Repositories.Interface;
 using CodingChallengeReal.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using StackExchange.Redis;
 
 namespace CodingChallengeReal.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("[controller]")]
     public class MatchController : Controller
@@ -26,7 +28,7 @@ namespace CodingChallengeReal.Controllers
             _mapper = mapper;
         }
 
-
+    
         [HttpPost]
         public async Task<IActionResult> AddMatchAsync(AddMatchDTO addMatchRequest)
         {
@@ -38,12 +40,14 @@ namespace CodingChallengeReal.Controllers
             return Ok(match);
         }
 
+
         [HttpGet]
         public async Task<IActionResult> GetMatchAsync(Guid id)
         {
             var matchDTO = await _matchRepository.GetAsync(id);
             return Ok(matchDTO);
         }
+
 
         [HttpDelete]
         public async Task<IActionResult> DeleteMatchAsync(Guid id)
@@ -52,6 +56,7 @@ namespace CodingChallengeReal.Controllers
 
             return Ok(deletedUserBool);
         }
+
 
         [HttpPut]
         public async Task<IActionResult> UpdateMatchAsync(Guid id, AddMatchDTO addMatchDTO)
