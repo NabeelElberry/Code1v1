@@ -25,6 +25,7 @@ import {
 } from "@/components/icons";
 import { Logo } from "@/components/icons";
 import { DynamicAuthenticationButton } from "./DynamicAuthenticationButton";
+import { CheckAuthStatus, CreateUserButton } from "@/config/firebase";
 
 export const Navbar = () => {
   const searchInput = (
@@ -52,7 +53,10 @@ export const Navbar = () => {
     <HeroUINavbar maxWidth="xl" position="sticky">
         <NavbarContent>
           <NavbarItem>
-            <DynamicAuthenticationButton />
+            <CreateUserButton /> 
+          </NavbarItem>
+          <NavbarItem>
+            <CheckAuthStatus />
           </NavbarItem>
         </NavbarContent>
 

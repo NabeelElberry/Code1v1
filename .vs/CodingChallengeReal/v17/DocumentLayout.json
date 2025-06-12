@@ -50,8 +50,7 @@
               "RelativeToolTip": "CodingChallengeReal\\Program.cs",
               "ViewState": "AgIAAAYAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-10T19:25:35.725Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-10T19:25:35.725Z"
             },
             {
               "$type": "Document",
@@ -63,8 +62,7 @@
               "RelativeToolTip": "CodingChallengeReal\\DTO\\MatchResultDTO.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAABSAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-10T19:20:10.813Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-10T19:20:10.813Z"
             },
             {
               "$type": "Document",
@@ -76,8 +74,7 @@
               "RelativeToolTip": "CodingChallengeReal\\DTO\\AddMatchDTO.cs",
               "ViewState": "AgIAAAIAAAAAAAAAAAAxwBIAAAAgAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-09T21:53:21.901Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-09T21:53:21.901Z"
             },
             {
               "$type": "Document",
@@ -89,8 +86,7 @@
               "RelativeToolTip": "CodingChallengeReal\\Services\\EnqueueService.cs",
               "ViewState": "AgIAACoAAAAAAAAAAAAQwFMAAAAoAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-02T19:05:36.585Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-02T19:05:36.585Z"
             },
             {
               "$type": "Document",
@@ -102,8 +98,7 @@
               "RelativeToolTip": "CodingChallengeReal\\Domains\\QueuedUser.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAYAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-21T19:20:07.168Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-21T19:20:07.168Z"
             },
             {
               "$type": "Document",
@@ -115,8 +110,7 @@
               "RelativeToolTip": "CodingChallengeReal\\Repositories\\Implementation\\QueueRepository.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAACUAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-20T21:56:42.73Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-20T21:56:42.73Z"
             },
             {
               "$type": "Document",
@@ -126,7 +120,7 @@
               "RelativeDocumentMoniker": "CodingChallengeReal\\Controllers\\MatchController.cs",
               "ToolTip": "C:\\Users\\nabee\\source\\repos\\CodingChallengeReal\\CodingChallengeReal\\Controllers\\MatchController.cs",
               "RelativeToolTip": "CodingChallengeReal\\Controllers\\MatchController.cs",
-              "ViewState": "AgIAAFIAAAAAAAAAAAAowFoAAAAlAAAAAAAAAA==",
+              "ViewState": "AgIAAFQAAAAAAAAAAAD4v4IAAAAVAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-14T15:49:39.716Z",
               "EditorCaption": ""
